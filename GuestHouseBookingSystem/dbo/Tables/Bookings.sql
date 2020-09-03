@@ -6,7 +6,9 @@
     [bDateTo]          NVARCHAR (50) NOT NULL,
     [bBookingStatusID] INT           NOT NULL,
     [bRoomCount]       INT           NOT NULL,
+    [bEmployeeID] NVARCHAR(50) NULL, 
     CONSTRAINT [PK_Bookings] PRIMARY KEY CLUSTERED ([bBookingID] ASC),
+    CONSTRAINT [FK_Bookings_Employee] FOREIGN KEY ([bEmployeeID]) REFERENCES [dbo].[Employee]([eEmployeeID]),
     CONSTRAINT [FK_Bookings_BookingStatus] FOREIGN KEY ([bBookingStatusID]) REFERENCES [dbo].[BookingStatus] ([bsBookingStatusID]),
     CONSTRAINT [FK_Bookings_Guest] FOREIGN KEY ([bGuestID]) REFERENCES [dbo].[Guests] ([gGuestID]),
     CONSTRAINT [FK_Bookings_GuestHouse] FOREIGN KEY ([bGuestHouseID]) REFERENCES [dbo].[GuestHouse] ([ghGuestHouseID])
